@@ -1,7 +1,7 @@
 <template>
   <div id="msgBv">
     <img alt="Vue logo" src="../assets/logo.png">
-    <Bienvenida msg="Bienvenido a la App"/>
+    <Bienvenida msg="Bienvenido a la App de Voluntariado"/>
   </div>
 </template>
 
