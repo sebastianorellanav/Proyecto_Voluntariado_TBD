@@ -10,6 +10,19 @@ Vue.use(VueRouter)
     name: 'Home',
     component: Home
   },
+  
+  {
+    path: '/voluntarios/habilidad',
+    name: 'VoluntarioHabilidad',
+    component: () => import(/* webpackChunkName: "about" */ '../views/VoluntarioHabilidad.vue')
+  },
+
+  {
+    path: '/voluntarios/emergencia',
+    name: 'VoluntarioEmergencia',
+    component: () => import(/* webpackChunkName: "about" */ '../views/VoluntarioEmergencia.vue')
+  },
+
   {
     path: '/about',
     name: 'About',

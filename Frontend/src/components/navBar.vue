@@ -2,7 +2,7 @@
   <div class="myNavBar" >
     <b-navbar type="dark" variant="dark" style="margin-bottom: 70px;">
     <b-navbar-nav>
-      <b-nav-item href="#">Home</b-nav-item>
+      <b-nav-item to="/">Home</b-nav-item>
 
       <!-- Navbar dropdowns -->
       <b-nav-item-dropdown text="Emergencias" right>
@@ -15,8 +15,8 @@
 
       <b-nav-item-dropdown text="Voluntarios" right>
         <b-dropdown-item href="#">Todos los Voluntarios</b-dropdown-item>
-        <b-dropdown-item href="#">Segun Habilidad</b-dropdown-item>
-        <b-dropdown-item href="#">Segun Emergencia</b-dropdown-item>
+        <b-dropdown-item to="/voluntarios/habilidad">Segun Habilidad</b-dropdown-item>
+        <b-dropdown-item to="/voluntarios/emergencia">Segun Emergencia</b-dropdown-item>
       </b-nav-item-dropdown>
 
       
