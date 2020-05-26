@@ -7,18 +7,38 @@
         </b-row>
         <b-row style="text-align:center;">
             <b-col align-self="center">
-                <b-form-input v-model="text" placeholder="Ingrese una Emergencia para buscar los Voluntarios que correspondan"></b-form-input>
+                <b-form-input v-model="text" 
+                placeholder="Ingrese una Emergencia para buscar los Voluntarios que correspondan"
+                style="margin-bottom:35px;">
+                </b-form-input>
+                <b-button @click="getVoluntariosSegunEmergencia()">Buscar Voluntarios</b-button>
             </b-col>
         </b-row>
     </b-container>
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        text: ''
-      }
+    import axios from 'axios';
+    export default {
+        data() {
+            return {
+                text: '',
+                datos: ''
+            }
+        },
+
+        methods:{
+        async getVoluntariosSegunEmergencia(){
+            console.log("funciona")
+            try {
+                this.datos = await axios.get('ruta del back' + this.text)
+
+            } 
+            catch (error) {
+                console.log(error)
+            }
+        }
     }
-  }
+    }
+
 </script>
