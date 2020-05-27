@@ -7,6 +7,7 @@ import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
 import java.util.Collection;
+import java.util.List;
 
 @Repository
 public class VoluntarioRepositoryImp implements VoluntarioRepository{
@@ -20,19 +21,18 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository{
         try(Connection conn = sql2o.open()){
             total = conn.createQuery("SELECT COUNT(*) FROM voluntario").executeScalar(Integer.class);
         }
+
         return total;
     }
 
     @Override
-    public Collection<Voluntario> getVoluntarios() {
-        Collection<Voluntario> voluntarios = null;
+    public List<Voluntario> getVoluntariosbyHabilidad(String habilidad) {
+        habilidad = habilidad.toLowerCase();
+        List<Voluntario> voluntarios = null;
         try(Connection conn = sql2o.open()){
-            voluntarios = conn.createQuery("SELECT * FROM voluntario")
-                    .executeAndFetch(Voluntario.class);
+            voluntarios = conn.createQuery("select a.id,a.nombre from voluntario a left join vol_habilidad b on a.id=b.id_voluntario left join habilidad c on b.id_habilidad = c.id where lower(c.descrip) ='" + habilidad+"'").executeAndFetch(Voluntario.class);
 
         }
-        System.out.println("Hola");
-        System.out.println(voluntarios);
         return voluntarios;
     }
 }

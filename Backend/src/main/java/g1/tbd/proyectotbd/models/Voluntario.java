@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class Voluntario {
     private Integer id;
-    private Integer nombre;
+    private String nombre;
     private Date fnacimiento;
 
     public Integer getId() {
@@ -15,11 +15,11 @@ public class Voluntario {
         this.id = id;
     }
 
-    public Integer getNombre() {
+    public String getNombre() {
         return this.nombre;
     }
 
-    public void setNombre(Integer nombre) {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 

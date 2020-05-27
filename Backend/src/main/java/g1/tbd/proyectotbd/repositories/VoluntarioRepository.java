@@ -7,6 +7,6 @@ import java.util.Collection;
 
 public interface VoluntarioRepository {
     public int countVoluntarios();
-    public Collection<Voluntario> getVoluntarios();
+    public Collection<Voluntario> getVoluntariosbyHabilidad(String habilidad);
 
 }

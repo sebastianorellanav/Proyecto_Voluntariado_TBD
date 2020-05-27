@@ -1,13 +1,17 @@
 package g1.tbd.proyectotbd.services;
 
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import g1.tbd.proyectotbd.models.Voluntario;
 import g1.tbd.proyectotbd.repositories.VoluntarioRepository;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
-import org.springframework.web.bind.annotation.RestController;
-
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 
 
 @CrossOrigin
@@ -24,5 +28,27 @@ public class VoluntarioService {
         int total = voluntarioRepository.countVoluntarios();
         return String.format("Tienes %s voluntarios!!", total);
     }
+
+
+    @GetMapping("/voluntarios/{habilidad}")
+    @ResponseBody
+    public List<HashMap<String, Object>> getArtistStadistic(@PathVariable String habilidad){
+
+        HashMap<String, Object> map = new HashMap<>();
+        List<HashMap<String, Object>> result = new ArrayList<>();
+        Collection<Voluntario> data = voluntarioRepository.getVoluntariosbyHabilidad(habilidad);
+        for(Voluntario v : data){
+
+            map.put("id", v.getId());
+            map.put("nombre", v.getNombre());
+            map.put("fnacimiento", v.getFnacimiento());
+
+            result.add(map);
+            map = new HashMap<>();
+        }
+        return result;
+    }
+
+
 
 }
