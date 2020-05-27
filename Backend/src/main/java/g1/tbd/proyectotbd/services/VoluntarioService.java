@@ -30,13 +30,31 @@ public class VoluntarioService {
     }
 
 
-    @GetMapping("/voluntarios/{habilidad}")
+    @GetMapping("/voluntarios/habilidad/{habilidad}")
     @ResponseBody
-    public List<HashMap<String, Object>> getArtistStadistic(@PathVariable String habilidad){
+    public List<HashMap<String, Object>> HU1(@PathVariable String habilidad){
 
         HashMap<String, Object> map = new HashMap<>();
         List<HashMap<String, Object>> result = new ArrayList<>();
         Collection<Voluntario> data = voluntarioRepository.getVoluntariosbyHabilidad(habilidad);
+        for(Voluntario v : data){
+
+            map.put("id", v.getId());
+            map.put("nombre", v.getNombre());
+            map.put("fnacimiento", v.getFnacimiento());
+
+            result.add(map);
+            map = new HashMap<>();
+        }
+        return result;
+    }
+    @GetMapping("/voluntarios/emergencia/{emergencia}")
+    @ResponseBody
+    public List<HashMap<String, Object>> HU2(@PathVariable String emergencia){
+
+        HashMap<String, Object> map = new HashMap<>();
+        List<HashMap<String, Object>> result = new ArrayList<>();
+        Collection<Voluntario> data = voluntarioRepository.getVoluntariobyEmergencia(emergencia);
         for(Voluntario v : data){
 
             map.put("id", v.getId());
