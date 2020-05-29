@@ -39,7 +39,7 @@
 
 <script>
     import axios from 'axios';
-    const localhost = 'http://190.164.238.133:8080/voluntarios/habilidad/';
+    const localhost = 'http://localhost:8080/voluntarios/habilidad/';
     export default {
         data() {
             return {

@@ -40,7 +40,7 @@
 
 <script>
     import axios from 'axios';
-    const localhost = 'http://190.164.238.133:8080/voluntarios/emergencia/';
+    const localhost = 'http://localhost:8080/voluntarios/emergencia/';
     export default {
         data() {
             return {
