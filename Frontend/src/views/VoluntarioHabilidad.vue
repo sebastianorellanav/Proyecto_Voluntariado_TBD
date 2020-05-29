@@ -14,25 +14,51 @@
                 <b-button @click="getVoluntariosSegunHabilidad()">Buscar Voluntarios</b-button>
             </b-col>
         </b-row>
+
+        <br>
+        <br>
+        <br>
+        <table class="table" v-if="mostrar">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Fecha nacimiento</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(item, index) in items" :key="index">
+                    <th scope="row">{{item.id}}</th>
+                    <td>{{item.nombre}}</td>
+                    <td>{{item.fnacimiento}}</td>
+                </tr>
+            </tbody>
+        </table>
     </b-container>
 </template>
 
 <script>
     import axios from 'axios';
+    const localhost = 'http://190.164.238.133:8080/voluntarios/habilidad/';
     export default {
         data() {
             return {
                 text: '',
-                datos: ''
+                mostrar: false,
+                items: []
             }
         },
 
         methods:{
         async getVoluntariosSegunHabilidad(){
-            console.log("funciona")
+            this.mostrar = true;
+            var url = localhost + this.text;
+            console.log(url)
             try {
-                this.datos = await axios.get('ruta del back' + this.text)
-
+                axios.get(url).then((response) => {
+                          this.items = response.data;
+                });
+                console.log(this.items)
             } 
             catch (error) {
                 console.log(error)
