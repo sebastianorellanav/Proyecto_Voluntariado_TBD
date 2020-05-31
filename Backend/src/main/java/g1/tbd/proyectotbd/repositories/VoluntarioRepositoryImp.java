@@ -41,7 +41,7 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository{
         emergencia=emergencia.toLowerCase();
         List<Voluntario> voluntarios = null;
         try(Connection conn = sql2o.open()){
-            voluntarios = conn.createQuery("select distinct c.id,d.nombre,d.fnacimiento from emergencia a left join tarea b on a.id = b.id_emergencia left join ranking c on b.id = c.id_tarea left join voluntario d on d.id = c.id_voluntario where c.flg_participa= 1 and a.nombre= '" + emergencia+ "'").executeAndFetch(Voluntario.class);
+            voluntarios = conn.createQuery("select distinct d.id,d.nombre,d.fnacimiento from emergencia a left join tarea b on a.id = b.id_emergencia left join ranking c on b.id = c.id_tarea left join voluntario d on d.id = c.id_voluntario where c.flg_participa= 1 and a.nombre= '" + emergencia+ "'").executeAndFetch(Voluntario.class);
 
         }
         return voluntarios;
