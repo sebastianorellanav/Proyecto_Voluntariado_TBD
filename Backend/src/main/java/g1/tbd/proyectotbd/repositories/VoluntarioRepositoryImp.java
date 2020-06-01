@@ -30,7 +30,7 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository{
         habilidad = habilidad.toLowerCase();
         List<Voluntario> voluntarios = null;
         try(Connection conn = sql2o.open()){
-            voluntarios = conn.createQuery("select a.id,a.nombre,a.fnacimiento from voluntario a left join vol_habilidad b on a.id=b.id_voluntario left join habilidad c on b.id_habilidad = c.id where lower(c.descrip) ='" + habilidad+"'").executeAndFetch(Voluntario.class);
+            voluntarios = conn.createQuery("select distinct a.id,a.nombre,a.fnacimiento from voluntario a left join vol_habilidad b on a.id=b.id_voluntario left join habilidad c on b.id_habilidad = c.id where lower(c.descrip) ='" + habilidad+"'").executeAndFetch(Voluntario.class);
 
         }
         return voluntarios;
