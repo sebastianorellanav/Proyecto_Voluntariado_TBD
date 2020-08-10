@@ -24,6 +24,18 @@ Vue.use(VueRouter)
   },
 
   {
+    path: '/emergencia',
+    name: 'Emergencias',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Emergencias.vue')
+  },
+
+  {
+    path: '/emergencia/nueva',
+    name: 'AñadirEmergencia',
+    component: () => import(/* webpackChunkName: "about" */ '../views/AñadirEmergencia.vue')
+  },
+
+  {
     path: '/about',
     name: 'About',
     // route level code-splitting
