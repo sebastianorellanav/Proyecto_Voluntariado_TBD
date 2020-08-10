@@ -47,7 +47,7 @@
         methods:{
             async getEmergencias(){
                 this.mostrar = true;
-                var url = localhost + this.text;
+                var url = localhost;
                 console.log("funciona")
                 try {
                     axios.get(url).then((response) => {
@@ -61,7 +61,7 @@
             }
         },
 
-        computed() {
+        created() {
             this.mostrar = false;
             this.getEmergencias();
             this.mostrar = true;
