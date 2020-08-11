@@ -29,13 +29,12 @@
         <b-form-group id="input-group-3" label="Fecha de Inicio:" label-for="input-3">
             <b-form-datepicker 
             id="input-3" 
-            v-model="form.finici" 
+            v-model="form.finicio" 
             locale="en" 
             required>
             </b-form-datepicker>
             
       </b-form-group>
-
       <b-form-group id="input-group-4" label="Fecha de Fin:" label-for="input-4">
             <b-form-datepicker 
             id="input-4" 
@@ -70,8 +69,8 @@
 
 <script>
   import axios from 'axios';
-const url_get = 'http://localhost:8080/instituciones/';
-const url_post = 'http://localhost:8080/emergencia/';
+const url_get = 'http://localhost:8080/institucion/form/';
+const url_post = 'http://localhost:8080/emergencia/create';
   export default {
     data() {
       return {
@@ -94,11 +93,17 @@ const url_post = 'http://localhost:8080/emergencia/';
       }
     },
     methods: {
-      async onSubmit(evt) {
-        evt.preventDefault()
+      async onSubmit() {
+        //evt.preventDefault()
         //alert("¿Esta seguro que desea enviar el formulario?")
+        const formData = new FormData();
+        formData.append('nombre', this.form.nombre);
+        formData.append('descripcion', this.form.descripcion);
+        formData.append('finicio', this.form.finicio);
+        formData.append('ffin', this.form.ffin);
+        formData.append('idInstitucion', this.form.idInstitucion);
         try {
-          let res = await axios.post(url_post, this.form);
+          let res = await axios.post(url_post, formData);
          console.log(res.data);
         } 
         catch (error) {
@@ -106,8 +111,8 @@ const url_post = 'http://localhost:8080/emergencia/';
           }
         this.onReset()
       },
-      onReset(evt) {
-        evt.preventDefault()
+      onReset() {
+        //evt.preventDefault()
         // Reset our form values
         this.form.nombre = ''
         this.form.finicio = ''
@@ -135,7 +140,7 @@ const url_post = 'http://localhost:8080/emergencia/';
             },
     },
 
-    computed(){
+    created(){
         this.getInstituciones();
     }
   }
