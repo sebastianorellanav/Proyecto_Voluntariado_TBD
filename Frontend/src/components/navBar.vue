@@ -6,7 +6,7 @@
 
       <!-- Navbar dropdowns -->
       <b-nav-item-dropdown text="Emergencias" right>
-        <b-dropdown-item href="#">Todas las Emergencias</b-dropdown-item>
+        <b-dropdown-item to="/emergencia">Todas las Emergencias</b-dropdown-item>
       </b-nav-item-dropdown>
 
       <b-nav-item-dropdown text="Tareas" right>
