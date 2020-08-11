@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface EmergenciaRepository {
     public List<Emergencia> getAllEmergencias();
+    public int countEmergencias();
+    public void insertEmergencia(Emergencia emergencia);
 }
