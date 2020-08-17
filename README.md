@@ -9,6 +9,8 @@ El código de la aplicación de divide en dos partes -Frontend y Backend- las cu
 
 ## Como Ejecutar el Backend ✈️
 
+Antes de ejecutar el backend se debe modificar el archivo application.properties ubicado en */Backend/src/main/resources/apliccation.properties* con las credenciales de la base de datos (usuario y contraseña).
+
 El backend se puede ejecutar utilizando el entorno de desarrollo Intellij o utilizando la terminal de Linux con el siguiente comando:
 
 ```
