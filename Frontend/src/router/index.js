@@ -14,25 +14,46 @@ Vue.use(VueRouter)
   {
     path: '/voluntarios/habilidad',
     name: 'VoluntarioHabilidad',
-    component: () => import(/* webpackChunkName: "about" */ '../views/VoluntarioHabilidad.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/Voluntario/VoluntarioHabilidad.vue')
   },
 
   {
     path: '/voluntarios/emergencia',
     name: 'VoluntarioEmergencia',
-    component: () => import(/* webpackChunkName: "about" */ '../views/VoluntarioEmergencia.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/Voluntario/VoluntarioEmergencia.vue')
   },
 
   {
     path: '/emergencia',
     name: 'Emergencias',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Emergencias.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/Emergencia/Emergencias.vue')
   },
 
   {
     path: '/emergencia/nueva',
     name: 'AñadirEmergencia',
-    component: () => import(/* webpackChunkName: "about" */ '../views/AñadirEmergencia.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/Emergencia/AñadirEmergencia.vue')
+  },
+  {
+    path: '/voluntario',
+    name: 'Voluntario',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Voluntario/Voluntarios.vue')
+  },
+  {
+    path: '/voluntario/nuevo',
+    name: 'AñadirVoluntario',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Voluntario/AñadirVoluntario.vue')
+  },
+
+  {
+    path: '/habilidad',
+    name: 'Habilidades',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Habilidad/Habilidades.vue')
+  },
+  {
+    path: '/habilidad/nueva',
+    name: 'AñadirHabilidad',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Habilidad/AñadirHabilidad.vue')
   },
 
   {
