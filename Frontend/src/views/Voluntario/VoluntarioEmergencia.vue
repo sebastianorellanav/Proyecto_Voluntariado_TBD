@@ -3,6 +3,7 @@
         <b-row style="text-align:center;margin-bottom:80px">
             <b-col align-self="center">
                 <h1>Voluntarios</h1>
+                <h6>Según Emergencia</h6>
             </b-col>
         </b-row>
         <b-row style="text-align:center;">
