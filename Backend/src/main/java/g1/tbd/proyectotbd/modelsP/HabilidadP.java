@@ -1,6 +1,6 @@
 package g1.tbd.proyectotbd.modelsP;
 
-public class Habilidad {
+public class HabilidadP {
     private Integer id;     //se realizará el hash utilizando la columna id
     private String descrip;
 

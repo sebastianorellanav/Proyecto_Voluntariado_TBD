@@ -1,6 +1,6 @@
 package g1.tbd.proyectotbd.modelsP;
 
-public class Vol_habilidadP {
+public class Vol_HabilidadP {
     private Integer id;
     private Integer id_voluntario;
     private Integer id_habilidad;
