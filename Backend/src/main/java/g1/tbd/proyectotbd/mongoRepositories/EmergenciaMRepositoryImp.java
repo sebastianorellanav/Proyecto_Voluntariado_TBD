@@ -14,6 +14,7 @@ import java.util.List;
 public class EmergenciaMRepositoryImp implements EmergenciaMRepository {
     @Autowired
     MongoDatabase database;
+
     @Override
     public int countEmergenciaM() {
         MongoCollection<Document> collection = database.getCollection("emergencia");

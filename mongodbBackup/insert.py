@@ -30,13 +30,13 @@ while i<1000:
 	finicio= str(random.randint(1,31))+"-"+str(random.randint(1,12))+"-"+str(a1)
 	ffin=str(random.randint(1,31))+"-"+str(random.randint(1,12))+"-"+str(a2)
 	insert={"nombre":nombre,"descrip":descrip,"finicio":finicio,"ffin":ffin}
-	emergencia.insert_one(insert)
+	emergencia_insertada=emergencia.insert_one(insert)
 	j=0
 	rand=random.randint(0,instituciones_count-1)
 	while j<rand:
 		j+=1
 	emergencias=instituciones[j]['emergencias']
-	emergencias.append(insert)
+	emergencias.append(str(emergencia_insertada.inserted_id))
 
 	obj=instituciones[j]['_id']
 	doc=institucion.find_one_and_update(
