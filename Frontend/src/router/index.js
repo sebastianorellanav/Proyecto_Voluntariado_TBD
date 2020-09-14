@@ -10,6 +10,11 @@ Vue.use(VueRouter)
     name: 'Home',
     component: Home
   },
+  {
+    path: '/voluntarios/habilidad',
+    name: 'VoluntarioHabilidad',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Voluntario/Voluntario_Habilidad.vue')
+  },
   
   {
     path: '/voluntarios/habilidad',
@@ -41,8 +46,8 @@ Vue.use(VueRouter)
   },
   {
     path: '/voluntario/nuevo',
-    name: 'AñadirVoluntario',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Voluntario/AñadirVoluntario.vue')
+    name: 'AgregarVoluntario',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Voluntario/AgregarVoluntario.vue')
   },
 
   {
@@ -52,8 +57,8 @@ Vue.use(VueRouter)
   },
   {
     path: '/habilidad/nueva',
-    name: 'AñadirHabilidad',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Habilidad/AñadirHabilidad.vue')
+    name: 'AgregarHabilidad',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Habilidad/AgregarHabilidad.vue')
   },
 
   {

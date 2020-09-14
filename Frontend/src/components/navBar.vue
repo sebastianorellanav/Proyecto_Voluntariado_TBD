@@ -23,6 +23,10 @@
         <b-dropdown-item to="/habilidad">Todos las Habilidades</b-dropdown-item>
       </b-nav-item-dropdown>
 
+      <b-nav-item-dropdown text="Voluntarios y Habilidad" right>
+        <b-dropdown-item to="/voluntarios/habilidad">Todos los Volunatarios y Habilidades</b-dropdown-item>
+      </b-nav-item-dropdown>
+
       
     </b-navbar-nav>
   </b-navbar>
