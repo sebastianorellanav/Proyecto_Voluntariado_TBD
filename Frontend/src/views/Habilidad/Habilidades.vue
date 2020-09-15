@@ -22,7 +22,7 @@
                     <th scope="row">{{item.id}}</th>
                     <td>{{item.nombre}}</td>
                     <td><b-button href="/habilidad/editar" variant="primary">Editar</b-button></td>
-                    <td><b-button variant="danger">Eliminar</b-button></td>
+                    <td><b-button variant="danger" @click="eliminarRegistro(item.id)">Eliminar</b-button></td>
                 </tr>
             </tbody>
         </table>
@@ -33,6 +33,7 @@
 <script>
     import axios from 'axios';
     const localhost = 'http://localhost:8080/habilidad/';
+    const url_eliminar = 'http://localhost:8080/habilidad/delete';
     export default {
         data() {
             return {
@@ -43,7 +44,7 @@
         },
 
         methods:{
-            async getVoluntarios(){
+            async getHabilidades(){
                 this.mostrar = true;
                 var url = localhost;
                 console.log("funciona")
@@ -56,12 +57,29 @@
                 catch (error) {
                     console.log(error)
                 }
+            },
+            
+            async eliminarRegistro(id){
+                try {
+                let res = await axios.post(url_eliminar, id);
+                console.log(res.data);
+                } 
+                catch (error) {
+                    console.log(error)
+                }
+                this.recargarHabilidades()
+            },
+
+            recargarHabilidades(){
+                this.mostrar = false;
+                this.getHabilidades();
+                this.mostrar = true;
             }
         },
 
         created() {
             this.mostrar = false;
-            this.getVoluntarios();
+            this.getHabilidades();
             this.mostrar = true;
         }
 

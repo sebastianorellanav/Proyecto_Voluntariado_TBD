@@ -22,7 +22,7 @@
                     <th scope="row">{{item.id}}</th>
                     <td>{{item.nombre}}</td>
                     <td><b-button href="/voluntario/editar" variant="primary">Editar</b-button></td>
-                    <td><b-button variant="danger">Eliminar</b-button></td>
+                    <td><b-button variant="danger" @click="eliminarRegistro(item.id)">Eliminar</b-button></td>
                 </tr>
             </tbody>
         </table>
@@ -33,6 +33,7 @@
 <script>
     import axios from 'axios';
     const localhost = 'http://localhost:8080/voluntario/';
+    const url_eliminar = 'http://localhost:8080/voluntario/delete';
     export default {
         data() {
             return {
@@ -56,6 +57,22 @@
                 catch (error) {
                     console.log(error)
                 }
+            },
+            async eliminarRegistro(id){
+                try {
+                let res = await axios.post(url_eliminar, id);
+                console.log(res.data);
+                } 
+                catch (error) {
+                    console.log(error)
+                }
+                this.recargarVoluntarios()
+            },
+
+            recargarVoluntarios(){
+                this.mostrar = false;
+                this.getVoluntarios();
+                this.mostrar = true;
             }
         },
 

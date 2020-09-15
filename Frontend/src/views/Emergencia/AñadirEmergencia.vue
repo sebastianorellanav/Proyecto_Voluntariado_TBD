@@ -59,8 +59,8 @@
       </b-form-group>
 
       <div style="padding-bottom:20px">
-          <b-button type="submit" variant="success" size="lg" style="margin-right:20px">Submit</b-button>
-      <b-button type="reset" variant="danger" size="lg" to="/emergencia" @click="onSubmit()">Reset</b-button>
+          <b-button type="submit" variant="success" size="lg" style="margin-right:20px">Añadir</b-button>
+      <b-button type="reset" variant="danger" size="lg" to="/emergencia" @click="onSubmit()">Cancelar</b-button>
       </div>
     </b-form>
   </div>
