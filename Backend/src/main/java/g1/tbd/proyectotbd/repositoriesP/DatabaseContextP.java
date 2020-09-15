@@ -1,4 +1,4 @@
-package g1.tbd.proyectotbd.repositories;
+package g1.tbd.proyectotbd.repositoriesP;
 
 import org.springframework.stereotype.Component;
 import org.sql2o.Sql2o;
