@@ -4,7 +4,7 @@
 
 El código de la aplicación de divide en dos partes -Frontend y Backend- las cuales deben compilarse y ejecutarse por separado. La sección se Frontend contiene las vistas de la aplicación. La parte de Backend contiene la lógica de la aplicación. 
 
-**IMPORTANTE:** se debe utilizar la base de datos *voluntariadodb_backup_contrigger* ubicada en la carpeta raíz del proyecto. 
+**IMPORTANTE:** se debe utilizar las bases de datos *voluntariadodb1*, *voluntariadodb2* y *voluntariadodb3* ubicadas en la carpeta raíz del proyecto. 
 
 
 ## Como Ejecutar el Backend ✈️
