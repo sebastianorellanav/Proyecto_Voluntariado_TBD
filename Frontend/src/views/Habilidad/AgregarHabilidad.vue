@@ -46,7 +46,7 @@ const url_post = 'http://localhost:8080/habilidad/create';
         //evt.preventDefault()
         //alert("¿Esta seguro que desea enviar el formulario?")
         const formData = new FormData();
-        formData.append('descripcion', this.form.descripcion);
+        formData.append('descrip', this.form.descripcion);
         try {
           let res = await axios.post(url_post, formData);
          console.log(res.data);

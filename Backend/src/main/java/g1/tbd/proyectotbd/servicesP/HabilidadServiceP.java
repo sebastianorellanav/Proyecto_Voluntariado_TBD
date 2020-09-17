@@ -4,8 +4,12 @@ package g1.tbd.proyectotbd.servicesP;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import g1.tbd.proyectotbd.modelsP.HabilidadP;
+import g1.tbd.proyectotbd.repositoriesP.HabilidadRepositoryImpP;
 import g1.tbd.proyectotbd.repositoriesP.HabilidadRepositoryP;
-
+import javax.servlet.http.HttpServletRequest;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.springframework.web.bind.annotation.*;
 
@@ -24,15 +28,15 @@ public class HabilidadServiceP {
         this.habilidadRepositoryP = habilidadRepositoryP;
     }
 
-    @GetMapping("/") //path todas las habilidades
+    @GetMapping("/habilidad") //path todas las habilidades
     public List<HabilidadP> all(){
-        List<HabilidadP> habilidadP = null;
+        List<HabilidadP> habilidades = null;
         habilidades = habilidadRepositoryP.getAllHabilidadesP();
 
-        return voluntarios;
+        return habilidades;
     }
 
-
+    /*
     @GetMapping("/") //path habilidad por voluntarios
     @ResponseBody
     public List<HashMap<String, Object>> HU1(@PathVariable String voluntarioP){
@@ -50,40 +54,37 @@ public class HabilidadServiceP {
         }
         return result;
     }
+     */
     @RequestMapping(value= "/habilidad/create", method = RequestMethod.POST)
     @ResponseBody
     public String crearHabilidadP(HttpServletRequest request) throws ParseException {
-        String nombre = request.getParameter("descrip");
+        String descrip = request.getParameter("descrip");
 
         Integer id = habilidadRepositoryP.countHabilidadesP() + 1;
 
         HabilidadP hP = new HabilidadP(id, descrip);
 
-        habilidadRepositoryP.InsertHabilidadP(hP);
+        int db = habilidadRepositoryP.InsertHabilidadP(hP);
 
-        return "La habilidad se creó correctamente";
+        db = db+1;
+
+        return "La habilidad se Almacenó en la Instancia "+ db + " de la BD";
     }
 
-    @RequestMapping(value= "/habilidad/delete", method = RequestMethod.POST)
+    @GetMapping("/habilidad/delete/{id}")
     @ResponseBody
-    public String borrarHabilidadP(HttpServletRequest request) throws ParseException {
-        String nombre = request.getParameter("descrip");
+    public String borrarHabilidadP(@PathVariable int id) {
+        habilidadRepositoryP.deleteHabilidadP(id);
 
-        Integer id = request.getParameter("id");
-
-        HabilidadP hP = new HabilidadP(id, descrip);
-
-        habilidadRepositoryP.deleteHabilidadP(hP);
-
-        return "La habilidad se elimino correctamente";
+        return "El voluntario se elimino correctamente";
     }
 
     @RequestMapping(value= "/habilidad/update", method = RequestMethod.POST)
     @ResponseBody
     public String actualizarHabilidadP(HttpServletRequest request) throws ParseException {
-        String nombre = request.getParameter("descrip");
+        String descrip = request.getParameter("descrip");
 
-        Integer id = request.getParameter("id");
+        Integer id = Integer.parseInt(request.getParameter("id"));
 
         HabilidadP hP = new HabilidadP(id, descrip);
 

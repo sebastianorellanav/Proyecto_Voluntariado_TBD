@@ -8,11 +8,13 @@
         <b-button variant="success" to="/voluntario/nuevo">Nuevo Voluntario</b-button>
         <br>
         <br>
+        
         <table class="table" v-if="mostrar">
             <thead>
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nombre</th>
+                    <th scope="col">Fecha Nacimiento</th>
                     <th scope="col">Editar</th>
                     <th scope="col">Eliminar</th>
                 </tr>
@@ -21,7 +23,8 @@
                 <tr v-for="(item, index) in items" :key="index">
                     <th scope="row">{{item.id}}</th>
                     <td>{{item.nombre}}</td>
-                    <td><b-button href="/voluntario/editar" variant="primary">Editar</b-button></td>
+                    <td>{{item.fnacimiento}}</td>
+                    <td><b-button variant="primary">Editar</b-button></td>
                     <td><b-button variant="danger" @click="eliminarRegistro(item.id)">Eliminar</b-button></td>
                 </tr>
             </tbody>
@@ -33,16 +36,17 @@
 <script>
     import axios from 'axios';
     const localhost = 'http://localhost:8080/voluntario/';
-    const url_eliminar = 'http://localhost:8080/voluntario/delete';
+    const url_eliminar = 'http://localhost:8080/voluntario/delete/';
     export default {
         data() {
             return {
                 text: '',
                 mostrar: false,
-                items: []
+                items: [],
+                voluntarioAEditar: {},
+                mostrarVentanaEdicion: false,
             }
         },
-
         methods:{
             async getVoluntarios(){
                 this.mostrar = true;
@@ -58,9 +62,13 @@
                     console.log(error)
                 }
             },
+            
+
             async eliminarRegistro(id){
+                //const formData = new FormData();
+                //formData.append('id', id);
                 try {
-                let res = await axios.post(url_eliminar, id);
+                let res = await axios.get(url_eliminar + id);
                 console.log(res.data);
                 } 
                 catch (error) {

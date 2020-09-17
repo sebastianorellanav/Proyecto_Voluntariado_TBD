@@ -27,13 +27,16 @@
             </b-form-datepicker>
             
       </b-form-group>
-
       <div style="padding-bottom:20px">
-          <b-button type="submit" variant="success" size="lg" style="margin-right:20px" @click="onSubmit()">Crear</b-button>
+          <b-button type="submit" variant="success" size="lg" style="margin-right:20px">Crear</b-button>
       <b-button type="reset" variant="danger" size="lg" to="/voluntario" >Cancelar</b-button>
       </div>
     </b-form>
   </div>
+  <br>
+  <br>
+  <br>
+  <h3>{{respuesta}}</h3>
     </b-container>
 </template>
 
@@ -48,6 +51,7 @@ const url_post = 'http://localhost:8080/voluntario/create';
           fnacimiento: '',
         },
         show: true,
+        respuesta: ''
         
       }
     },
@@ -57,9 +61,10 @@ const url_post = 'http://localhost:8080/voluntario/create';
         //alert("¿Esta seguro que desea enviar el formulario?")
         const formData = new FormData();
         formData.append('nombre', this.form.nombre);
-        formData.append('descripcion', this.form.fnacimiento);
+        formData.append('fnacimiento', this.form.fnacimiento);
         try {
           let res = await axios.post(url_post, formData);
+         this.respuesta = res.data
          console.log(res.data);
         } 
         catch (error) {

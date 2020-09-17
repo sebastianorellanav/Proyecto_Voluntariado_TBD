@@ -12,7 +12,6 @@ import java.util.List;
 @Repository
 public class EmergenciaRepositoryImp implements EmergenciaRepository{
 
-    @Autowired
     private Sql2o sql2o;
 
     @Override

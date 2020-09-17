@@ -20,7 +20,7 @@
             <tbody>
                 <tr v-for="(item, index) in items" :key="index">
                     <th scope="row">{{item.id}}</th>
-                    <td>{{item.nombre}}</td>
+                    <td>{{item.descrip}}</td>
                     <td><b-button href="/habilidad/editar" variant="primary">Editar</b-button></td>
                     <td><b-button variant="danger" @click="eliminarRegistro(item.id)">Eliminar</b-button></td>
                 </tr>
@@ -33,7 +33,7 @@
 <script>
     import axios from 'axios';
     const localhost = 'http://localhost:8080/habilidad/';
-    const url_eliminar = 'http://localhost:8080/habilidad/delete';
+    const url_eliminar = 'http://localhost:8080/habilidad/delete/';
     export default {
         data() {
             return {
@@ -61,7 +61,7 @@
             
             async eliminarRegistro(id){
                 try {
-                let res = await axios.post(url_eliminar, id);
+                let res = await axios.get(url_eliminar + id);
                 console.log(res.data);
                 } 
                 catch (error) {

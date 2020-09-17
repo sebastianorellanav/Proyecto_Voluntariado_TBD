@@ -4,6 +4,11 @@ public class HabilidadP {
     private Integer id;     //se realizará el hash utilizando la columna id
     private String descrip;
 
+    public HabilidadP(Integer id, String descrip) {
+        this.id = id;
+        this.descrip = descrip;
+    }
+
     public Integer getId() {
         return this.id;
     }

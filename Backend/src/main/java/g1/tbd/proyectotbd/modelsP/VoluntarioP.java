@@ -7,6 +7,12 @@ public class VoluntarioP {
     private String nombre;
     private Date fnacimiento;
 
+    public VoluntarioP(Integer id, String nombre, Date fnacimiento) {
+        this.id = id;
+        this.nombre = nombre;
+        this.fnacimiento = fnacimiento;
+    }
+
     public Integer getId() {
         return this.id;
     }
